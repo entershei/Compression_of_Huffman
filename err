@@ -1,0 +1,64 @@
+lib/compression.cpp: In constructor 'buffer_input_stream::buffer_input_stream(std::istream&)':
+lib/compression.cpp:24:52: warning: declaration of 'in' shadows a member of 'buffer_input_stream' [-Wshadow]
+     explicit buffer_input_stream(std::istream &in) : in(in), pos_in_char(0), cnt_in_bit(0) {
+                                                    ^
+lib/compression.cpp:19:19: note: shadowed declaration is here
+     std::istream &in;
+                   ^~
+lib/compression.cpp: In member function 'bool buffer_input_stream::can_read_char()':
+lib/compression.cpp:39:20: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+         return pos < size;
+                ~~~~^~~~~~
+lib/compression.cpp: In constructor 'buffer_output_stream::buffer_output_stream(std::ostream&)':
+lib/compression.cpp:83:45: warning: declaration of 'out' shadows a member of 'buffer_output_stream' [-Wshadow]
+     buffer_output_stream(std::ostream &out) : pos(0), out(out), pos_in_char(0) {}
+                                             ^
+lib/compression.cpp:80:19: note: shadowed declaration is here
+     std::ostream &out;
+                   ^~~
+lib/compression.cpp: In constructor 'node::node(int, int)':
+lib/compression.cpp:139:31: warning: declaration of 'right' shadows a member of 'node' [-Wshadow]
+     node(int left, int right) : left(left), right(right) {}
+                               ^
+lib/compression.cpp:135:9: note: shadowed declaration is here
+     int right;
+         ^~~~~
+lib/compression.cpp:139:31: warning: declaration of 'left' shadows a member of 'node' [-Wshadow]
+     node(int left, int right) : left(left), right(right) {}
+                               ^
+lib/compression.cpp:134:9: note: shadowed declaration is here
+     int left;
+         ^~~~
+lib/compression.cpp: In function 'std::vector<node> build_huffman_tree(const std::vector<unsigned int>&)':
+lib/compression.cpp:160:34: warning: narrowing conversion of 'node1.std::pair<unsigned int, unsigned int>::second' from 'unsigned int' to 'int' inside { } [-Wnarrowing]
+         tree[cnt_nodes] = {node1.second, node2.second};
+                            ~~~~~~^~~~~~
+lib/compression.cpp:160:48: warning: narrowing conversion of 'node2.std::pair<unsigned int, unsigned int>::second' from 'unsigned int' to 'int' inside { } [-Wnarrowing]
+         tree[cnt_nodes] = {node1.second, node2.second};
+                                          ~~~~~~^~~~~~
+lib/compression.cpp: In function 'std::vector<unsigned char>& read_length(buffer_input_stream&)':
+lib/compression.cpp:267:25: warning: reference to local variable 'length' returned [-Wreturn-local-addr]
+     std::vector<char_t> length(ALPHABET);
+                         ^~~~~~
+lib/compression.cpp: In constructor 'node_for_bor::node_for_bor(char, size_t, size_t)':
+lib/compression.cpp:289:46: warning: declaration of 'c' shadows a member of 'node_for_bor' [-Wshadow]
+     node_for_bor(char c, size_t l, size_t r) : term(true), c(c) {
+                                              ^
+lib/compression.cpp:278:10: note: shadowed declaration is here
+     char c;
+          ^
+lib/compression.cpp: In function 'std::vector<node_for_bor>& build_bor(std::vector<unsigned int>&, std::vector<unsigned char>&)':
+lib/compression.cpp:296:31: warning: reference to local variable 'bor' returned [-Wreturn-local-addr]
+     std::vector<node_for_bor> bor(1);
+                               ^~~
+lib/compression.cpp: In function 'uint64_t read_cnt_bit(buffer_input_stream&)':
+lib/compression.cpp:260:16: warning: 'cur' may be used uninitialized in this function [-Wmaybe-uninitialized]
+         ret |= static_cast<uint64_t>(cur) << (i * 8);
+                ^~~~~~~~~~~~~~~~~~~~~~~~~~
+lib/compression.cpp: In function 'void compression::decode(std::istream&, std::ostream&)':
+lib/compression.cpp:260:16: warning: 'cur' may be used uninitialized in this function [-Wmaybe-uninitialized]
+         ret |= static_cast<uint64_t>(cur) << (i * 8);
+                ^~~~~~~~~~~~~~~~~~~~~~~~~~
+lib/compression.cpp:258:16: note: 'cur' was declared here
+         char_t cur;
+                ^~~
